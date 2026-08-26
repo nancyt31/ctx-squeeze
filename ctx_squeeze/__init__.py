@@ -1,12 +1,11 @@
 """Context compaction for LLM prompts, using only the standard library.
 
-This is still a partial build: the token estimator, segmenter, dedupe stage,
-scoring stage, and message pruning are in place, but the compactor stage
-(``squeeze``) and the CLI the README describes are not written yet, so they
-are not imported here. Add each to this list as it lands instead of
-importing modules that don't exist.
+This is still a partial build: everything but the CLI the README describes
+is in place. Add ``cli`` to this list once it lands instead of importing a
+module that doesn't exist.
 """
 
+from .compactor import SqueezeResult, STRATEGIES, squeeze
 from .dedupe import dedupe_segments, find_near_duplicates, jaccard, shingles
 from .messages import Message, PruneResult, parse_messages, prune_messages, to_dicts
 from .scoring import score_segments, select_by_score
@@ -19,6 +18,8 @@ __all__ = [
     "Message",
     "PruneResult",
     "Segment",
+    "SqueezeResult",
+    "STRATEGIES",
     "__version__",
     "dedupe_segments",
     "estimate_tokens",
@@ -32,6 +33,7 @@ __all__ = [
     "select_by_score",
     "shingles",
     "split_segments",
+    "squeeze",
     "to_dicts",
     "truncate_to_tokens",
 ]
