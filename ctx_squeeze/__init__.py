@@ -1,8 +1,9 @@
 """Context compaction for LLM prompts, using only the standard library.
 
-This is still a partial build: everything but the CLI the README describes
-is in place. Add ``cli`` to this list once it lands instead of importing a
-module that doesn't exist.
+The CLI lives in ``cli.py`` and is reached through the ``ctx-squeeze``
+console script (see ``pyproject.toml``) or ``python -m ctx_squeeze.cli``, so
+it is not imported here - it only needs ``argparse`` and stdio, and plain
+``import ctx_squeeze`` shouldn't have to pull those in.
 """
 
 from .compactor import SqueezeResult, STRATEGIES, squeeze
